@@ -42,58 +42,61 @@ class _MapremierePageState extends State<MapremierePage> {
     );
   }
 }
-
+//vue
 class PartieGrilleImage extends StatelessWidget {
   const PartieGrilleImage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveGridList(
-      desiredItemWidth: 150.0,
-      minSpacing: 16,
-      children: [
-        IdentificationStreaming(
-          tagStream: "Streaming News 1",
-          imageStream: "https://picsum.photos/500/300?random=1",
-          nomStream: "Que des news",
-          chaineRadio: "Radio 1",
-        ),
-
-        IdentificationStreaming(
-          tagStream: "Streaming News 2",
-          imageStream: "https://picsum.photos/500/300?random=2",
-          nomStream: "Que des news 2",
-          chaineRadio: "Radio 2",
-        ),
-
-        IdentificationStreaming(
-          tagStream: "Streaming News 3",
-          imageStream: "https://picsum.photos/500/300?random=3",
-          nomStream: "Que des news 3",
-          chaineRadio: "Radio 3",
-        ),
-
-        IdentificationStreaming(
-          tagStream: "Streaming News 4",
-          imageStream: "https://picsum.photos/500/300?random=4",
-          nomStream: "Que des news 4",
-          chaineRadio: "Radio 4",
-        ),
-
-        IdentificationStreaming(
-          tagStream: "Streaming News 5",
-          imageStream: "https://picsum.photos/500/300?random=5",
-          nomStream: "Que des news 5",
-          chaineRadio: "Radio 5",
-        ),
-
-        IdentificationStreaming(
-          tagStream: "Streaming News 6",
-          imageStream: "https://picsum.photos/500/300?random=6",
-          nomStream: "Que des news 6",
-          chaineRadio: "Radio 6",
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 16),
+      child: ResponsiveGridList(
+        desiredItemWidth: 150.0,
+        minSpacing: 16,
+        children: [
+          IdentificationStreaming(
+            tagStream: "Streaming News 1",
+            imageStream: "https://picsum.photos/500/300?random=1",
+            nomStream: "Que des news",
+            chaineRadio: "Radio 1",
+          ),
+      
+          IdentificationStreaming(
+            tagStream: "Streaming News 2",
+            imageStream: "https://picsum.photos/500/300?random=2",
+            nomStream: "Que des news 2",
+            chaineRadio: "Radio 2",
+          ),
+      
+          IdentificationStreaming(
+            tagStream: "Streaming News 3",
+            imageStream: "https://picsum.photos/500/300?random=3",
+            nomStream: "Que des news 3",
+            chaineRadio: "Radio 3",
+          ),
+      
+          IdentificationStreaming(
+            tagStream: "Streaming News 4",
+            imageStream: "https://picsum.photos/500/300?random=4",
+            nomStream: "Que des news 4",
+            chaineRadio: "Radio 4",
+          ),
+      
+          IdentificationStreaming(
+            tagStream: "Streaming News 5",
+            imageStream: "https://picsum.photos/500/300?random=5",
+            nomStream: "Que des news 5",
+            chaineRadio: "Radio 5",
+          ),
+      
+          IdentificationStreaming(
+            tagStream: "Streaming News 6",
+            imageStream: "https://picsum.photos/500/300?random=6",
+            nomStream: "Que des news 6",
+            chaineRadio: "Radio 6",
+          ),
+        ],
+      ),
     );
   }
 }
@@ -258,7 +261,7 @@ class IdentificationStreaming extends StatelessWidget {
     );
   }
 }
-
+//model
 class AlbumStreaming extends StatelessWidget {
   final String imageStream;
   final String nomStream;
