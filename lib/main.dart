@@ -32,67 +32,68 @@ class _MapremierePageState extends State<MapremierePage> {
         centerTitle: true,
         leading: const Icon(Icons.search),
         backgroundColor: Colors.amber,
-        actions: [Icon(Icons.list)],
-        title: Text(
+        actions: const [Icon(Icons.list)],
+        title: const Text(
           "Vos émissions en streaming",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: PartieGrilleImage(),
+      body: const PartieGrilleImage(),
     );
   }
 }
 
-class PartieGrilleImage  extends StatelessWidget{
-  const PartieGrilleImage ({super.key});
+class PartieGrilleImage extends StatelessWidget {
+  const PartieGrilleImage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveGridList(
-       desiredItemWidth: 100.0,
-       minSpacing: 5,
-       children: [
+      desiredItemWidth: 150.0,
+      minSpacing: 16,
+      children: [
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news", 
-            chaineRadio: "Radio 1"
-          ),
-    
+          tagStream: "Streaming News 1",
+          imageStream: "https://picsum.photos/500/300?random=1",
+          nomStream: "Que des news",
+          chaineRadio: "Radio 1",
+        ),
+
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news 2", 
-            chaineRadio: "Radio 2"
-          ),
+          tagStream: "Streaming News 2",
+          imageStream: "https://picsum.photos/500/300?random=2",
+          nomStream: "Que des news 2",
+          chaineRadio: "Radio 2",
+        ),
+
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news 3", 
-            chaineRadio: "Radio 3"
-          ),
-    
+          tagStream: "Streaming News 3",
+          imageStream: "https://picsum.photos/500/300?random=3",
+          nomStream: "Que des news 3",
+          chaineRadio: "Radio 3",
+        ),
+
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news 4", 
-            chaineRadio: "Radio 4"
-          ),
-    
+          tagStream: "Streaming News 4",
+          imageStream: "https://picsum.photos/500/300?random=4",
+          nomStream: "Que des news 4",
+          chaineRadio: "Radio 4",
+        ),
+
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news 5", 
-            chaineRadio: "Radio 5"
-          ),
-    
+          tagStream: "Streaming News 5",
+          imageStream: "https://picsum.photos/500/300?random=5",
+          nomStream: "Que des news 5",
+          chaineRadio: "Radio 5",
+        ),
+
         IdentificationStreaming(
-            tagStream: "Streaming News", 
-            imageStream: "assets/images/news.jpg", 
-            nomStream: "Que des news 6", 
-            chaineRadio: "Radio 6"
-          ),
-       ],
+          tagStream: "Streaming News 6",
+          imageStream: "https://picsum.photos/500/300?random=6",
+          nomStream: "Que des news 6",
+          chaineRadio: "Radio 6",
+        ),
+      ],
     );
   }
 }
@@ -101,11 +102,13 @@ class BottomNavigationBarPage extends StatefulWidget {
   const BottomNavigationBarPage({super.key});
 
   @override
-  State<BottomNavigationBarPage> createState() => _BottomNavigationBarPageState();
+  State<BottomNavigationBarPage> createState() =>
+      _BottomNavigationBarPageState();
 }
 
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
   int _currentIndex = 0;
+
   final List<Widget> _pages = [
     const MapremierePage(),
     const Center(child: Text("Recherche")),
@@ -125,7 +128,9 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _setWidget,
-        items: [
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Recherche"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
@@ -135,12 +140,13 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
   }
 }
 
-//Model
+// Model
 class IdentificationStreaming extends StatelessWidget {
   final String tagStream;
   final String imageStream;
   final String nomStream;
   final String chaineRadio;
+
   const IdentificationStreaming({
     super.key,
     required this.tagStream,
@@ -154,7 +160,15 @@ class IdentificationStreaming extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.3))],
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 8,
+            spreadRadius: 1,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -162,30 +176,81 @@ class IdentificationStreaming extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AlbumStreaming(chaineRadio: chaineRadio, nomStream: nomStream, imageStream: imageStream)),
+              MaterialPageRoute(
+                builder: (context) => AlbumStreaming(
+                  chaineRadio: chaineRadio,
+                  nomStream: nomStream,
+                  imageStream: imageStream,
+                ),
+              ),
             );
           },
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Hero(tag: tagStream, 
-              child: Image.network(
+              Hero(
+                tag: tagStream,
+                child: Image.network(
                   imageStream,
                   width: double.infinity,
                   height: 180,
                   fit: BoxFit.cover,
-                )
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+
+                    return const SizedBox(
+                      height: 180,
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const SizedBox(
+                      height: 180,
+                      child: Center(
+                        child: Icon(
+                          Icons.image_not_supported,
+                          size: 50,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
+
+              Padding(
+                padding: const EdgeInsets.all(16),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(nomStream),
-                    const SizedBox(height: 5,),
-                    Text(chaineRadio)
+                    Text(
+                      nomStream,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    Row(
+                      children: [
+                        const Icon(Icons.radio, size: 18, color: Colors.amber),
+                        const SizedBox(width: 6),
+                        Text(
+                          chaineRadio,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey.shade700,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -199,7 +264,13 @@ class AlbumStreaming extends StatelessWidget {
   final String nomStream;
   final String chaineRadio;
 
-  const AlbumStreaming({super.key, required this.chaineRadio, required this.nomStream, required this.imageStream});
+  const AlbumStreaming({
+    super.key,
+    required this.chaineRadio,
+    required this.nomStream,
+    required this.imageStream,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
