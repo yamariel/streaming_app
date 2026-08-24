@@ -192,7 +192,7 @@ class IdentificationStreaming extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Hero(
-                tag: tagStream,
+                tag: imageStream,
                 child: Image.network(
                   imageStream,
                   width: double.infinity,
@@ -276,6 +276,87 @@ class AlbumStreaming extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {}, 
+            icon: Icon(Icons.favorite_border)
+          )
+        ],
+      ),
+
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Hero(
+          tag: imageStream, 
+          child:           Image.network(
+            imageStream,
+            width: double.infinity,
+            height: 300,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress ==  null) {
+                return child;
+              }
+
+              return const SizedBox(
+                height: 180,
+                child: Center(child: CircularProgressIndicator()),
+              );
+            },
+            errorBuilder: (context, error, stackTrace) {
+              return const SizedBox(
+                height: 180,
+                child: Center(
+                  child: Icon(
+                    Icons.image_not_supported,
+                    size: 50,
+                    color: Colors.grey,
+                  ),
+                ),
+              );
+            },
+          ),
+          ),
+
+          Container(
+            width: double.infinity,
+            color: Colors.purple,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            child: Text(
+              nomStream,
+              style: const TextStyle(
+                fontSize: 25,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+
+          Container(
+            width: double.infinity,
+            color: Colors.purple,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            child: Text(
+              chaineRadio,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
