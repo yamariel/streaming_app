@@ -16,17 +16,23 @@ class GrilleEmissions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveGridList(
-      desiredItemWidth: 150.0,
-      minSpacing: 16,
-      children: emissions.map((emission) {
-        return CarteEmission(
-          emission: emission,
-          onTap: () {
-            onTap(emission);
-          },
-        );
-      }).toList(),
+    return Padding(
+      padding: const EdgeInsets.only(top: 16),
+      child: ResponsiveGridList(
+        desiredItemWidth: 150.0,
+        minSpacing: 16,
+        children: [
+          ...emissions.map((emission) {
+            return CarteEmission(
+              emission: emission,
+              onTap: () {
+                onTap(emission);
+              },
+            );
+          }),
+          const SizedBox(height: 10),
+        ],
+      ),
     );
   }
 }
